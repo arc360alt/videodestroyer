@@ -70,7 +70,8 @@ export default function VideoDestroyer() {
       const progressInterval = setInterval(() => {
         setProgress(prev => {
           if (prev >= 90) return 90; // Cap at 90% until complete
-          return prev + Math.random() * 15; // Random increments for realism
+          const newProgress = prev + Math.random() * 15;
+          return Math.min(Math.round(newProgress), 90); // Round and cap at 90
         });
       }, 800);
 
